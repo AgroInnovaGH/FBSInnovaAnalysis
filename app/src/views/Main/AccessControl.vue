@@ -28,7 +28,6 @@
                   hide-details
           ></v-text-field>
         </v-col>
-        <v-spacer/>
       </v-card-title>
       <v-data-table
               multi-sort
