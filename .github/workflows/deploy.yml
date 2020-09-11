@@ -28,6 +28,7 @@ jobs:
       - name: Build App
         run: |
           cd app
+          npm ci
           npm run build
           cd ..
 
