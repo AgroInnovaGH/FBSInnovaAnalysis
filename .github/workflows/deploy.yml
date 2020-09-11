@@ -33,7 +33,7 @@ jobs:
       # Deploys it to firebase
       - name: Deploy to firebase
         uses: pizzafox/firebase-action@1.0.7
-          env:
-            FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          with:
-            args: deploy
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        with:
+          args: deploy --only hosting
