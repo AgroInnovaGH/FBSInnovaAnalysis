@@ -20,17 +20,17 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Installs node js and builds app
-      - name: Build App
+      - name: Install Node Js
         uses: actions/setup-node@v1
         with:
           node-version: '12'
+
+      - name: Build App
         run: |
           cd app
           npm run build
           cd ..
 
-      # Deploys it to firebase
       - name: Deploy to firebase
         uses: pizzafox/firebase-action@1.0.7
         env:
