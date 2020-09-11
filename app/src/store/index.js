@@ -13,6 +13,9 @@ export default new Vuex.Store({
   getters: {
     hasAccess(state){
       return state.user.details.access
+    },
+    isSuper(state){
+      return state.user.details.super
     }
   },
   mutations: {

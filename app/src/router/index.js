@@ -10,7 +10,9 @@ Vue.use(VueRouter)
       component: Main,
       children: [
         { name: 'home', path: '', component: ()=>import('../views/Main/Home') },
-        { name: 'farmers', path: 'farmers', component: ()=>import('../views/Main/Farmers') }
+        { name: 'farmers', path: 'farmers', component: ()=>import('../views/Main/Farmers') },
+        { name: 'access-control', path: 'access-control', component: ()=>import('../views/Main/AccessControl') },
+
       ]
     },
     {

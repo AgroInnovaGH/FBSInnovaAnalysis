@@ -41,6 +41,16 @@
             Dashboard
           </v-list-item-title>
         </v-list-item>
+        <v-list-item v-if="$store.getters.isSuper" color="primary" :to="{name: 'access-control'}">
+          <v-list-item-avatar>
+            <v-avatar class="pa-2">
+              <v-img contain src="../../assets/svg/068-phone.svg"/>
+            </v-avatar>
+          </v-list-item-avatar>
+          <v-list-item-title>
+            Access Control
+          </v-list-item-title>
+        </v-list-item>
         <v-list-item :to="{name: 'farmers'}" color="primary">
           <v-list-item-avatar>
             <v-avatar class="pa-2">
