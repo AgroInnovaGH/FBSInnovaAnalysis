@@ -87,7 +87,8 @@
               if(this.password === this.confirm_password){
                 this.$firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
                   .then(()=>{
-                    this.$router.push({name: 'home'})
+                      this.$firebase.analytics().logEvent('sign_up', 'email')
+                      this.$router.push({name: 'home'})
                   }).catch(err=>{
                       this.$emit('error', err.message)
                   }).finally(()=>{
@@ -102,6 +103,7 @@
                 let provider = new this.$firebase.auth.GoogleAuthProvider
                 this.$firebase.auth().signInWithPopup(provider)
                     .then(()=>{
+                        this.$firebase.analytics().logEvent('sign_up', 'google')
                         this.$router.push({name: 'home'})
                     }).catch(err=>{
                     this.$emit('error', err.message)

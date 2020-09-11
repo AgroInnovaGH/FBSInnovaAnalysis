@@ -65,6 +65,7 @@
             this.loading = true
             this.$http.get('farmers')
               .then(res=>{
+                  this.$firebase.analytics().logEvent('page_view', 'farmers')
                   this.farmers = res.data
               }).catch(err=>{
                   console.error(err)

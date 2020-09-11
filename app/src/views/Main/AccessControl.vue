@@ -68,13 +68,16 @@
         methods:{
             updateAccess(user){
                 this.$firebase.firestore().collection('user').doc(user.id)
-                    .update({ access: user.access })
+                    .update({ access: user.access }).then(()=>{
+                    this.$firebase.analytics().logEvent('access_control_change', true)
+                })
             }
         },
         created() {
             if(this.$store.getters.isSuper){
                 this.show_access = true
                 this.loading = true
+                this.$firebase.analytics().logEvent('page_view', 'access control')
                 this.$firebase.firestore().collection('user').onSnapshot(snapshot => {
                     this.users = []
                     snapshot.forEach(doc=>{
