@@ -3,9 +3,9 @@
     <v-card-title class="justify-center">
       <img width="72px" src="../assets/logo.png"></img>
       <span class="text-h4" >
-                  <span class="primary--text">FBSInnova</span>
-                  <span class="secondary--text">Analysis</span>
-                </span>
+        <span class="primary--text">FBSInnova</span>
+        <span class="secondary--text">Analysis</span>
+      </span>
     </v-card-title>
     <v-card-subtitle class="text-center">
                 <span class="text-h5">
@@ -75,6 +75,7 @@
                 this.loading.email = true
                 this.$firebase.auth().signInWithEmailAndPassword(this.email, this.password)
                   .then(_=>{
+                      this.$firebase.analytics().logEvent('login', 'email')
                       this.$router.push({name: 'home'})
                   }).catch(err=>{
                     this.$emit('error', err.message)
@@ -87,6 +88,7 @@
                 let provider = new this.$firebase.auth.GoogleAuthProvider
                 this.$firebase.auth().signInWithPopup(provider)
                   .then(()=>{
+                      this.$firebase.analytics().logEvent('login', 'google')
                       this.$router.push({name: 'home'})
                   }).catch(err=>{
                       this.$emit('error', err.message)

@@ -3,23 +3,26 @@
     <v-app-bar
       clipped-left
       app
-      color="white"
+      :color="$vuetify.theme.dark ? '' : 'white'"
     >
       <div class="d-flex align-center">
-        <v-img
-          alt="FBInnova Analysis"
-          class="shrink mr-2"
-          contain
-          src="../../assets/logo.png"
-          transition="scale-transition"
-          width="40"
-        />
+          <v-img
+            alt="FBInnova Analysis"
+            class="shrink mr-2"
+            contain
+            src="../../assets/logo.png"
+            transition="scale-transition"
+            width="40"
+          />
       </div>
       <span class="hidden-sm-and-down text-h5 primary--text">
         FBS<span class="secondary--text">Innova</span>
       </span>
       <v-spacer></v-spacer>
-
+      <v-btn icon @click="$vuetify.theme.dark = !$vuetify.theme.dark">
+        <v-icon v-if="!$vuetify.theme.dark">mdi-weather-night</v-icon>
+        <v-icon v-else>mdi-weather-sunny</v-icon>
+      </v-btn>
       <v-btn @click="show_drawer = true" class="hidden-lg-and-up" icon>
         <v-icon>mdi-menu</v-icon>
       </v-btn>
@@ -131,7 +134,7 @@
         </v-col>
         <v-fade-transition v-else leave-absolute mode="out-in">
           <keep-alive >
-              <router-view class="grey lighten-5 fill-height" />
+              <router-view :class="!$vuetify.theme.dark ? 'grey lighten-5 fill-height': ''" />
           </keep-alive>
         </v-fade-transition>
       </template>
@@ -155,8 +158,13 @@
             })
         },
         created() {
+            this.$vuetify.theme.dark = true
             this.$firebase.auth().onAuthStateChanged(user=>{
                 if(user){
+                    this.$firebase.analytics().setUserId(user.uid)
+                    this.$firebase.analytics().setUserProperties({
+                        ...user
+                    })
                     this.$firebase.firestore().collection('user').doc(user.uid)
                       .onSnapshot(snapshot => {
                           let data = snapshot.data()

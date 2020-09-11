@@ -17,6 +17,8 @@ export default {
             measurementId: "G-K9G7671THE"
         })
 
+        app.analytics().setAnalyticsCollectionEnabled(true)
+
         Vue.prototype.$firebase = app
     }
 }
