@@ -158,7 +158,6 @@
             })
         },
         created() {
-            this.$vuetify.theme.dark = true
             this.$firebase.auth().onAuthStateChanged(user=>{
                 if(user){
                     this.$firebase.analytics().setUserId(user.uid)
