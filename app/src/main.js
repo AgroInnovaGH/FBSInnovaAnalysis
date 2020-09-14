@@ -7,10 +7,12 @@ import vuetify from './plugins/vuetify';
 import axios from './plugins/axios'
 
 import firebase from "./plugins/firebase";
-
+import VueMoment from 'vue-moment'
 
 Vue.use(firebase)
 Vue.use(axios)
+Vue.use(VueMoment)
+
 
 Vue.config.productionTip = false
 
