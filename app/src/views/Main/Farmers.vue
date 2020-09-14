@@ -33,6 +33,9 @@
           :search="search"
           no-data-text="farmer records unavailable"
       >
+        <template v-slot:item.created_at="{item}">
+          {{item.created_at | moment('Do MMMM, YYYY')}}
+        </template>
         <template v-slot:item.farm="{ item }">
           <v-btn disabled outlined color="primary" rounded>
             <v-icon left>mdi-barn</v-icon>
@@ -56,6 +59,7 @@
                     { text: 'Gender', value: 'gender' },
                     { text: 'Phone Number', value: 'phoneNumber' },
                     { text: 'Country', value: 'country' },
+                    { text: 'Date Created', value: 'created_at' },
                     { text: 'Farm', value: 'farm', align: 'center' }
                 ],
                 farmers: [],
