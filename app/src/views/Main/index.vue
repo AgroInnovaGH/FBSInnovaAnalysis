@@ -16,7 +16,8 @@
           />
       </div>
       <span class="hidden-sm-and-down text-h5 primary--text">
-        FBS<span class="secondary--text">Innova</span>
+        <span class="secondary--text font-weight-bold ml-n2 ">FBS</span>
+        <span>Innova</span>
       </span>
       <v-spacer></v-spacer>
       <v-btn icon @click="$vuetify.theme.dark = !$vuetify.theme.dark">
