@@ -31,6 +31,8 @@
           :headers="headers"
           :items="farmers"
           :search="search"
+          sort-by="created_at"
+          sort-desc
           no-data-text="farmer records unavailable"
       >
         <template v-slot:item.created_at="{item}">
