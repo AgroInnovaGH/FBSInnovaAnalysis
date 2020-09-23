@@ -81,10 +81,12 @@
                 this.$firebase.firestore().collection('user').onSnapshot(snapshot => {
                     this.users = []
                     snapshot.forEach(doc=>{
-                        this.users.push({
-                            id: doc.id,
-                            ...doc.data()
-                        })
+                        let data = doc.data()
+                        if(!data.hidden)
+                          this.users.push({
+                              id: doc.id,
+                              ...data
+                          })
                     })
                     console.log(this.users)
                     this.loading = false
